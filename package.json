@@ -1,6 +1,6 @@
 {
   "name": "mocha-emailable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A single page emailable reporter for Mocha.js",
   "scripts": {
     "lint": "eslint src"

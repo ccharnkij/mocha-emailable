@@ -174,7 +174,7 @@ function cleanTest(test, config) {
     pass: test.state === 'passed',
     fail: test.state === 'failed',
     pending: test.pending,
-    context: test.context,
+    context: test.context === undefined ? [] : test.context,
     code: code && cleanCode(code),
     err: (test.err && normalizeErr(test.err, config)) || {},
     uuid: test.uuid || /* istanbul ignore next: default */ uuid.v4(),
