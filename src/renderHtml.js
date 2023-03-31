@@ -7,6 +7,31 @@ const appRoot = require('app-root-path');
 const propFile = appRoot + '/mocha-emailable.properties';
 
 const render = (options, mergedResults) => {
+  // Making sure that the tests are in the same order every time
+  mergedResults.suites.suites.sort((a, b) => {
+    //
+    if (a.title < b.title) {
+      return -1;
+    }
+    if (a.title > b.title) {
+      return 1;
+    }
+    return 0;
+  });
+
+  for (const suite of mergedResults.suites.suites) {
+    suite.tests.sort((a, b) => {
+      //
+      if (a.title < b.title) {
+        return -1;
+      }
+      if (a.title > b.title) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
   const environment = nunjucks.configure(
     [path.join(__dirname, '../templates/')],
     {
